@@ -1,0 +1,3 @@
+C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/CMakeFiles/tinyraytracer.dir
+C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/CMakeFiles/ALL_BUILD.dir
+C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/CMakeFiles/ZERO_CHECK.dir
