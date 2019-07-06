@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/Geometry.h
+iostream
+-
+cassert
+-
+
+C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/Raytracer.cpp
+limits
+-
+cmath
+-
+iostream
+-
+fstream
+-
+vector
+-
+algorithm
+-
+Geometry.h
+C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/Geometry.h
+

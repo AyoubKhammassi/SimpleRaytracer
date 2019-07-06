@@ -1,0 +1,3 @@
+C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/edit_cache.dir
+C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/simpleraytracer.dir
+C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/rebuild_cache.dir
