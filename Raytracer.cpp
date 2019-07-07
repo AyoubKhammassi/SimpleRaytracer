@@ -6,22 +6,24 @@
 #include <algorithm>
 #include "Geometry.h"
 
+#define M_PI 3.1415926535897932384626433832795028841971693993751058209
+
 //cast ray
 Vec3f cast_ray(const Vec3f &r_origin, const Vec3f &r_direction, const Sphere &sphere)
 {
     float sphere_dist = std::numeric_limits<float>::max();
     if (sphere.ray_intersect(r_origin, r_direction, sphere_dist))
-        return Vec3f(0.2, 0.7, 0.8);
+        return Vec3f(0.4, 0.4, 0.3);
 
-    return Vec3f(0.4, 0.4, 0.3);
+    return Vec3f(0.2, 0.7, 0.8);
 }
 //Writes image to disk
 void render(const Sphere &sphere)
 {
     const int width = 1024;
     const int height = 768;
-    const int fov = 60;
-    const float ratio = width / (float)height;
+    const float fov = M_PI / 2.;
+    const float dir_z = -height / (2. * tan(fov / 2.));
 
     std::vector<Vec3f> frameBuffer(width * height);
 
@@ -29,10 +31,12 @@ void render(const Sphere &sphere)
     {
         for (size_t i = 0; i < width; i++)
         {
-            float x = (2 * (i + 0.5) / (float)width - 1) * tan(fov / 2.) * ratio;
-            float y = -(2 * (j + 0.5) / (float)height - 1) * tan(fov / 2.);
-            Vec3f dir = Vec3f(x, y, -1).normalize();
-            frameBuffer[i + j * width] = cast_ray(Vec3f(0, 0, 0), dir, sphere);
+            float dir_x = (i + 0.5) - width / 2.;
+            float dir_y = -(j + 0.5) + height / 2.; // this flips the image at the same time
+
+            Vec3f dir(dir_x, dir_y, dir_z);
+            //std::cout << dir[2] << "\n";
+            frameBuffer[i + j * width] = cast_ray(Vec3f(0, 0, 0), dir.normalize(), sphere);
         }
     }
 
@@ -54,7 +58,7 @@ void render(const Sphere &sphere)
 
 int main()
 {
-    Vec3f c(-3, 0, -16);
+    Vec3f c(0.0, 0., -10.);
     Sphere s(c, 2.0f);
     render(s);
     return 0;

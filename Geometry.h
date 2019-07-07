@@ -60,9 +60,11 @@ struct vec<3, T>
         return i <= 0 ? x : (1 == i ? y : z);
     }
     float norm() { return std::sqrt(x * x + y * y + z * z); }
-    vec<3, T> &normalize(const T l = 1)
+    vec<3, T> &normalize(T l = 1.f)
     {
-        *this = (*this) * (l / norm());
+        const float n = norm();
+        const float ni = (l / n);
+        *this = (*this) * ni;
         return *this;
     }
 
@@ -80,11 +82,22 @@ vec<DIM, T> operator+(vec<DIM, T> &l, const vec<DIM, T> &r)
 
 //Vector Substraction operator
 template <size_t DIM, typename T>
-vec<DIM, T> operator-(vec<DIM, T> &l, const vec<DIM, T> &r)
+vec<DIM, T> operator-(const vec<DIM, T> &l, const vec<DIM, T> &r)
 {
-    for (size_t index = DIM; index--; l[index] -= r[index])
+    Vec3f ret(0, 0, 0);
+    for (size_t index = DIM; index--; ret[index] = l[index] - r[index])
         ;
-    return l;
+    return ret;
+}
+
+//this is the dot product, not a normal multiplication
+template <size_t DIM, typename T>
+T operator*(vec<DIM, T> &l, const vec<DIM, T> &r)
+{
+    T ret = T();
+    for (size_t index = DIM; index--; ret += l[index] * r[index])
+        ;
+    return ret;
 }
 
 //this is the dot product, not a normal multiplication
@@ -99,7 +112,7 @@ T operator*(const vec<DIM, T> &l, const vec<DIM, T> &r)
 
 //Vector product with a scaler
 template <size_t DIM, typename T, typename S>
-vec<DIM, T> operator*(vec<DIM, T> &l, S &s)
+vec<DIM, T> operator*(vec<DIM, T> &l, const S &s)
 {
     for (size_t index = DIM; index--; l[index] *= s)
         ;
@@ -115,7 +128,7 @@ vec<DIM, T> operator-(vec<DIM, T> &r)
 
 //The cross product for vectors with three components
 template <typename T>
-vec<3, T> operator-(const vec<3, T> &v1, const vec<3, T> &v2)
+vec<3, T> cross(const vec<3, T> &v1, const vec<3, T> &v2)
 {
     return vec<3, T>(v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x);
 }
@@ -137,26 +150,33 @@ struct Sphere
     Vec3f center;
     float radius;
     //constructor
-    Sphere(Vec3f &c, const float &r) : center(c), radius(r) {}
+    Sphere(Vec3f &c, const float &r) : center(c), radius(r)
+    {
+        std::cout << "Center: " << center << "\n";
+    }
 
     bool ray_intersect(const Vec3f &r_origin, const Vec3f &r_direction, float &t0) const
     {
         //the vector from the ray origin to the center of the sphere
-        Vec3f distanceVec = center - r_origin;
+        Vec3f distanceVec = (center - r_origin);
+
         //use the dot product to project the distanceVec on the ray direction vector : ProjectionTest
         float pt = r_direction * distanceVec;
+        //std::cout << " Distance from sphere center to projection point: " << pt << "\n";
+
         //two cases depending on the value of pt
+
         if (pt <= 0.0f)
             return false; //the sphere is behind the ray
 
         //we need to find the distance between the sphere center and the projection point on the ray, using c^2 = a^2 + b^2 : DistanceToProjectionPoint dtpp
         float dtpp = (distanceVec * distanceVec) - pt * pt;
+
         if (dtpp > radius * radius)
             return false;
         else //intersection with the sphere in one or two points
         {
             //distance from projection pt to intersection point, it's the same in for both intersection points : dfpti
-
             float dfpti = sqrtf(radius * radius - dtpp);
             //first point of intersection
             float i0 = pt - dfpti;
