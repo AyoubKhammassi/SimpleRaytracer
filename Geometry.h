@@ -150,7 +150,7 @@ struct Sphere
     Vec3f center;
     float radius;
     //constructor
-    Sphere(Vec3f &c, const float &r) : center(c), radius(r)
+    Sphere(const Vec3f &c, const float &r) : center(c), radius(r)
     {
         std::cout << "Center: " << center << "\n";
     }

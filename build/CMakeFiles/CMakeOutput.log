@@ -838,3 +838,105 @@ mingw32-make.exe[1]: Leaving directory 'C:/Users/Ayoub/Documents/Projects/Other/
 
 Source file was:
 int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe cmTC_36696/fast && C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f CMakeFiles\cmTC_36696.dir\build.make CMakeFiles/cmTC_36696.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_36696.dir/src.cxx.obj
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE    -Dflag_supported   -Wall -o CMakeFiles\cmTC_36696.dir\src.cxx.obj -c C:\Users\Ayoub\Documents\Projects\Other\SimpleRaytracer\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_36696.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_36696.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_36696.dir/objects.a
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\ar.exe cr CMakeFiles\cmTC_36696.dir/objects.a @CMakeFiles\cmTC_36696.dir\objects1.rsp
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  -Dflag_supported    -Wl,--whole-archive CMakeFiles\cmTC_36696.dir/objects.a -Wl,--no-whole-archive  -o cmTC_36696.exe -Wl,--out-implib,libcmTC_36696.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_36696.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe cmTC_41c2e/fast && C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f CMakeFiles\cmTC_41c2e.dir\build.make CMakeFiles/cmTC_41c2e.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_41c2e.dir/src.cxx.obj
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE    -Wall -Dflag_supported   -Wextra -o CMakeFiles\cmTC_41c2e.dir\src.cxx.obj -c C:\Users\Ayoub\Documents\Projects\Other\SimpleRaytracer\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_41c2e.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_41c2e.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_41c2e.dir/objects.a
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\ar.exe cr CMakeFiles\cmTC_41c2e.dir/objects.a @CMakeFiles\cmTC_41c2e.dir\objects1.rsp
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  -Wall -Dflag_supported    -Wl,--whole-archive CMakeFiles\cmTC_41c2e.dir/objects.a -Wl,--no-whole-archive  -o cmTC_41c2e.exe -Wl,--out-implib,libcmTC_41c2e.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_41c2e.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe cmTC_3f062/fast && C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f CMakeFiles\cmTC_3f062.dir\build.make CMakeFiles/cmTC_3f062.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_3f062.dir/src.cxx.obj
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE    -Wall -Wextra -Dflag_supported   -pedantic -o CMakeFiles\cmTC_3f062.dir\src.cxx.obj -c C:\Users\Ayoub\Documents\Projects\Other\SimpleRaytracer\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_3f062.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_3f062.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_3f062.dir/objects.a
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\ar.exe cr CMakeFiles\cmTC_3f062.dir/objects.a @CMakeFiles\cmTC_3f062.dir\objects1.rsp
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  -Wall -Wextra -Dflag_supported    -Wl,--whole-archive CMakeFiles\cmTC_3f062.dir/objects.a -Wl,--no-whole-archive  -o cmTC_3f062.exe -Wl,--out-implib,libcmTC_3f062.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_3f062.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe cmTC_101f3/fast && C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f CMakeFiles\cmTC_101f3.dir\build.make CMakeFiles/cmTC_101f3.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_101f3.dir/src.cxx.obj
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE    -Wall -Wextra -pedantic -Dflag_supported   -std=c++11 -o CMakeFiles\cmTC_101f3.dir\src.cxx.obj -c C:\Users\Ayoub\Documents\Projects\Other\SimpleRaytracer\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_101f3.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_101f3.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_101f3.dir/objects.a
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\ar.exe cr CMakeFiles\cmTC_101f3.dir/objects.a @CMakeFiles\cmTC_101f3.dir\objects1.rsp
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  -Wall -Wextra -pedantic -Dflag_supported    -Wl,--whole-archive CMakeFiles\cmTC_101f3.dir/objects.a -Wl,--no-whole-archive  -o cmTC_101f3.exe -Wl,--out-implib,libcmTC_101f3.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_101f3.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe cmTC_75631/fast && C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f CMakeFiles\cmTC_75631.dir\build.make CMakeFiles/cmTC_75631.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_75631.dir/src.cxx.obj
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE    -Wall -Wextra -pedantic -std=c++11 -Dflag_supported   -O3 -o CMakeFiles\cmTC_75631.dir\src.cxx.obj -c C:\Users\Ayoub\Documents\Projects\Other\SimpleRaytracer\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_75631.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_75631.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_75631.dir/objects.a
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\ar.exe cr CMakeFiles\cmTC_75631.dir/objects.a @CMakeFiles\cmTC_75631.dir\objects1.rsp
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  -Wall -Wextra -pedantic -std=c++11 -Dflag_supported    -Wl,--whole-archive CMakeFiles\cmTC_75631.dir/objects.a -Wl,--no-whole-archive  -o cmTC_75631.exe -Wl,--out-implib,libcmTC_75631.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_75631.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test flag_supported succeeded with the following output:
+Change Dir: C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe cmTC_ebe38/fast && C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f CMakeFiles\cmTC_ebe38.dir\build.make CMakeFiles/cmTC_ebe38.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_ebe38.dir/src.cxx.obj
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE    -Wall -Wextra -pedantic -std=c++11 -O3 -Dflag_supported   -fopenmp -o CMakeFiles\cmTC_ebe38.dir\src.cxx.obj -c C:\Users\Ayoub\Documents\Projects\Other\SimpleRaytracer\build\CMakeFiles\CMakeTmp\src.cxx
+Linking CXX executable cmTC_ebe38.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_ebe38.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_ebe38.dir/objects.a
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\ar.exe cr CMakeFiles\cmTC_ebe38.dir/objects.a @CMakeFiles\cmTC_ebe38.dir\objects1.rsp
+C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  -Wall -Wextra -pedantic -std=c++11 -O3 -Dflag_supported    -Wl,--whole-archive CMakeFiles\cmTC_ebe38.dir/objects.a -Wl,--no-whole-archive  -o cmTC_ebe38.exe -Wl,--out-implib,libcmTC_ebe38.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_ebe38.dir\linklibs.rsp
+mingw32-make.exe[1]: Leaving directory 'C:/Users/Ayoub/Documents/Projects/Other/SimpleRaytracer/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }

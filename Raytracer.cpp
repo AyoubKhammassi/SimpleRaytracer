@@ -9,16 +9,20 @@
 #define M_PI 3.1415926535897932384626433832795028841971693993751058209
 
 //cast ray
-Vec3f cast_ray(const Vec3f &r_origin, const Vec3f &r_direction, const Sphere &sphere)
+Vec3f cast_ray(const Vec3f &r_origin, const Vec3f &r_direction, const std::vector<Sphere> &spheres)
 {
     float sphere_dist = std::numeric_limits<float>::max();
-    if (sphere.ray_intersect(r_origin, r_direction, sphere_dist))
-        return Vec3f(0.4, 0.4, 0.3);
-
-    return Vec3f(0.2, 0.7, 0.8);
+    for (Sphere sphere : spheres)
+    {
+        if (sphere.ray_intersect(r_origin, r_direction, sphere_dist))
+        {
+            return Vec3f(0.2, 0.7, 0.8);
+        }
+    }
+    return Vec3f(0.4, 0.4, 0.3);
 }
 //Writes image to disk
-void render(const Sphere &sphere)
+void render(const std::vector<Sphere> &spheres)
 {
     const int width = 1024;
     const int height = 768;
@@ -36,7 +40,7 @@ void render(const Sphere &sphere)
 
             Vec3f dir(dir_x, dir_y, dir_z);
             //std::cout << dir[2] << "\n";
-            frameBuffer[i + j * width] = cast_ray(Vec3f(0, 0, 0), dir.normalize(), sphere);
+            frameBuffer[i + j * width] = cast_ray(Vec3f(0, 0, 0), dir.normalize(), spheres);
         }
     }
 
@@ -58,8 +62,17 @@ void render(const Sphere &sphere)
 
 int main()
 {
-    Vec3f c(0.0, 0., -10.);
-    Sphere s(c, 2.0f);
-    render(s);
+    std::vector<Sphere> spheres;
+    Sphere s1(Vec3f(0.0, 0., -10.), 2.0f);
+    Sphere s2(Vec3f(20.0, 0., -20.), 7.0f);
+    Sphere s3(Vec3f(-5.0, 0., -8.), 5.0f);
+    spheres.push_back(s1);
+    spheres.push_back(s2);
+    spheres.push_back(s3);
+    for (Sphere sphere : spheres)
+    {
+        std::cout << sphere.radius;
+    }
+    render(spheres);
     return 0;
 }
