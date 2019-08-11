@@ -9,20 +9,34 @@
 #define M_PI 3.1415926535897932384626433832795028841971693993751058209
 
 //cast ray
-Vec3f cast_ray(const Vec3f &r_origin, const Vec3f &r_direction, const std::vector<Sphere> &spheres)
+Vec3f cast_ray(const Ray &ray, const std::vector<Geometry *> &spheres, int &bounces)
 {
-    float sphere_dist = std::numeric_limits<float>::max();
-    for (Sphere sphere : spheres)
+    hit_record rec;
+    bool found_hit = false;
+    for (auto sphere : spheres)
     {
-        if (sphere.ray_intersect(r_origin, r_direction, sphere_dist))
+        if (sphere->ray_intersect(ray, 1000.0, rec))
         {
-            return Vec3f(0.2, 0.7, 0.8);
+            found_hit = true;
+            break;
         }
     }
-    return Vec3f(0.4, 0.4, 0.3);
+
+    if (found_hit)
+    {
+        return Vec3f(1, 1, 1);
+        //TODO: change geometry with meshes that contain geometry for intersection and materials for lighting calculation
+    }
+    else //gradient for the background
+    {
+        Vec3f unit_vec = ray.ray_direction;
+        unit_vec.normalize();
+        float t = 0.5 * (unit_vec.y + 1.0);
+        return (Vec3f(1., 1., 1.) * (1.0f - t)) + (Vec3f(0.5, 0.7, 1.0) * t); //(0.4, 0.4, 0.3);
+    }
 }
 //Writes image to disk
-void render(const std::vector<Sphere> &spheres)
+void render(const std::vector<Geometry *> &spheres)
 {
     const int width = 1024;
     const int height = 768;
@@ -40,7 +54,9 @@ void render(const std::vector<Sphere> &spheres)
 
             Vec3f dir(dir_x, dir_y, dir_z);
             //std::cout << dir[2] << "\n";
-            frameBuffer[i + j * width] = cast_ray(Vec3f(0, 0, 0), dir.normalize(), spheres);
+            const Ray r(Vec3f(0, 0, 0), dir.normalize());
+            int bounces = 0;
+            frameBuffer[i + j * width] = cast_ray(r, spheres, bounces);
         }
     }
 
@@ -62,17 +78,14 @@ void render(const std::vector<Sphere> &spheres)
 
 int main()
 {
-    std::vector<Sphere> spheres;
-    Sphere s1(Vec3f(0.0, 0., -10.), 2.0f);
+    std::vector<Geometry *> spheres;
+    Sphere s1(Vec3f(0.0, 0., -50.), 2.0f);
     Sphere s2(Vec3f(20.0, 0., -20.), 7.0f);
     Sphere s3(Vec3f(-5.0, 0., -8.), 5.0f);
-    spheres.push_back(s1);
-    spheres.push_back(s2);
-    spheres.push_back(s3);
-    for (Sphere sphere : spheres)
-    {
-        std::cout << sphere.radius;
-    }
+    spheres.push_back(&s1);
+    spheres.push_back(&s2);
+    spheres.push_back(&s3);
+
     render(spheres);
     return 0;
 }

@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <cassert>
+
+#pragma region vector
 //one dimensional vector of dimeension DIM and components of type T
 template <size_t DIM, typename T>
 struct vec
@@ -73,18 +75,19 @@ struct vec<3, T>
 
 //Vector Addition operator
 template <size_t DIM, typename T>
-vec<DIM, T> operator+(vec<DIM, T> &l, const vec<DIM, T> &r)
+vec<DIM, T> operator+(const vec<DIM, T> &l, const vec<DIM, T> &r)
 {
-    for (size_t index = DIM; index--; l[index] += r[index])
+    vec<DIM, T> ret;
+    for (size_t index = DIM; index--; ret[index] = l[index] + r[index])
         ;
-    return l;
+    return ret;
 }
 
 //Vector Substraction operator
 template <size_t DIM, typename T>
 vec<DIM, T> operator-(const vec<DIM, T> &l, const vec<DIM, T> &r)
 {
-    Vec3f ret(0, 0, 0);
+    vec<DIM, T> ret;
     for (size_t index = DIM; index--; ret[index] = l[index] - r[index])
         ;
     return ret;
@@ -112,11 +115,12 @@ T operator*(const vec<DIM, T> &l, const vec<DIM, T> &r)
 
 //Vector product with a scaler
 template <size_t DIM, typename T, typename S>
-vec<DIM, T> operator*(vec<DIM, T> &l, const S &s)
+vec<DIM, T> operator*(const vec<DIM, T> &l, const S &s)
 {
-    for (size_t index = DIM; index--; l[index] *= s)
+    vec<DIM, T> ret;
+    for (size_t index = DIM; index--; ret[index] = l[index] * s)
         ;
-    return l;
+    return ret;
 }
 
 //Multiplying the vector with a minus one to make it negatif
@@ -133,6 +137,13 @@ vec<3, T> cross(const vec<3, T> &v1, const vec<3, T> &v2)
     return vec<3, T>(v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x);
 }
 
+//The cross product for vectors with three components
+template <typename T>
+vec<3, T> cross(vec<3, T> &v1, vec<3, T> &v2)
+{
+    return vec<3, T>(v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x);
+}
+
 template <size_t DIM, typename T>
 std::ostream &operator<<(std::ostream &out, vec<DIM, T> &v)
 {
@@ -143,25 +154,61 @@ std::ostream &operator<<(std::ostream &out, vec<DIM, T> &v)
     return out;
 }
 
+#pragma endregion vector
+
+#pragma region ray
+struct Ray
+{
+    Vec3f ray_origin;
+    Vec3f ray_direction;
+
+    Ray(Vec3f ro, Vec3f rd) : ray_origin(ro), ray_direction(rd){};
+};
+
+struct hit_record
+{
+    double t;
+    Vec3f point;
+    Vec3f normal;
+};
+
+#pragma endregion ray
+
+#pragma region shapes
 //Geometry Shapes
 
-struct Sphere
+struct Geometry
 {
+protected:
     Vec3f center;
+
+public:
+    //default constructor
+    Geometry() = default;
+    Geometry(const Vec3f &c) : center(c) {}
+    virtual bool ray_intersect(const Ray &ray, float max_t, hit_record &rec) const { return true; }
+    virtual Vec3f get_normal(const Vec3f p) const { return (p - center).normalize(); }
+};
+
+struct Sphere : public Geometry
+{
+private:
     float radius;
+
+public:
     //constructor
-    Sphere(const Vec3f &c, const float &r) : center(c), radius(r)
+    Sphere(const Vec3f &c, const float &r) : radius(r)
     {
-        std::cout << "Center: " << center << "\n";
+        center = c;
     }
 
-    bool ray_intersect(const Vec3f &r_origin, const Vec3f &r_direction, float &t0) const
+    virtual bool ray_intersect(const Ray &ray, float max_t, hit_record &rec) const
     {
         //the vector from the ray origin to the center of the sphere
-        Vec3f distanceVec = (center - r_origin);
+        Vec3f distanceVec = (center - ray.ray_origin);
 
         //use the dot product to project the distanceVec on the ray direction vector : ProjectionTest
-        float pt = r_direction * distanceVec;
+        float pt = ray.ray_direction * distanceVec;
         //std::cout << " Distance from sphere center to projection point: " << pt << "\n";
 
         //two cases depending on the value of pt
@@ -181,10 +228,18 @@ struct Sphere
             //first point of intersection
             float i0 = pt - dfpti;
             float i1 = pt + dfpti;
-            t0 = (i0 <= 0.0f) ? i1 : i0;
+            const float t0 = (i0 <= 0.0f) ? i1 : i0;
+            if (t0 > max_t)
+                return false;
+
+            rec.t = t0;
+            rec.point = ray.ray_origin + ray.ray_direction * t0;
+            rec.normal = get_normal(rec.point);
             return true;
         }
     }
 };
+
+#pragma endregion shapes
 
 #endif // _GEOMETRY_H_
